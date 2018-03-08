@@ -20,6 +20,7 @@ public class PocketCreatorControllerTest {
         Response response = new PocketCreatorController(pocketStorage).createNewPocket(POCKET_NAME);
 
         assertTrue(response.isSuccess());
+        verify(this.pocketStorage).existPocket(POCKET_NAME);
     }
 
     @Test
