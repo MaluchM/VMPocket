@@ -20,7 +20,11 @@ public class PocketController {
     }
 
     public Response deletePocket(String pocketName) {
-        pocketStorage.removePocket(pocketName);
+        if(!pocketStorage.existPocket(pocketName)) {
+            return new Response(false, "Pocket with this name not exists");
+        } else {
+            pocketStorage.removePocket(pocketName);
+        }
         return new Response(true);
     }
 }

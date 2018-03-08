@@ -45,4 +45,15 @@ public class PocketControllerTest {
         assertTrue(response.isSuccess());
         verify(this.pocketStorage, Mockito.times(1)).removePocket(POCKET_NAME);
     }
+
+    @Test
+    public void shouldNotDeletePocketIfPocketNotExist() {
+        BDDMockito.given(pocketStorage.existPocket(POCKET_NAME)).willReturn(false);
+
+        Response response = pocketController.deletePocket(POCKET_NAME);
+
+        assertFalse(response.isSuccess());
+        assertEquals("Pocket with this name not exists", response.getMessage());
+        verify(pocketStorage, never()).removePocket(POCKET_NAME);
+    }
 }
