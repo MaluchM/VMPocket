@@ -6,4 +6,6 @@ public interface PocketStorage {
     void addPocket(Pocket pocket);
 
     boolean existPocket(String pocketName);
+
+    void removePocket(String pocketName);
 }
