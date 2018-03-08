@@ -17,4 +17,8 @@ public class Response {
     public boolean isSuccess() {
         return isSuccess;
     }
+
+    public String getMessage() {
+        return message;
+    }
 }
